@@ -1,0 +1,50 @@
+{
+  "name": "react-bootstrap-grid",
+  "version": "1.0.0",
+  "version_short": "1.0",
+  "description": "Twitter Bootstrap 4 Standalone Flexbox Grid System for React",
+  "keywords": [
+    "react-bootstrap-grid",
+    "react",
+    "component",
+    "components",
+    "react-component",
+    "bootstrap",
+    "flexbox",
+    "responsive",
+    "front-end",
+    "framework",
+    "ui"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rjpdude/react-bootstrap-grid.git"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "author": "Ryan J. Pridgen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rjpdude/react-bootstrap-grid/issues"
+  },
+  "homepage": "https://github.com/Rjpdude/react-bootstrap-grid#readme",
+  "devDependencies": {
+    "@types/react": "^16.8.8",
+    "prettier": "^1.16.4",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "react": "^16.8.4"
+  }
+}
