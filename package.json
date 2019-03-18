@@ -1,6 +1,6 @@
 {
   "name": "twbs-react-grid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "version_short": "1.0",
   "description": "Twitter Bootstrap 4 Standalone Flexbox Grid System for React",
   "keywords": [
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rjpdude/react-bootstrap-grid.git"
+    "url": "git+https://github.com/Rjpdude/twbs-react-grid.git"
   },
   "files": [
     "lib/**/*"
@@ -39,9 +39,9 @@
   "author": "Ryan J. Pridgen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Rjpdude/react-bootstrap-grid/issues"
+    "url": "https://github.com/Rjpdude/twbs-react-grid/issues"
   },
-  "homepage": "https://github.com/Rjpdude/react-bootstrap-grid#readme",
+  "homepage": "https://github.com/Rjpdude/twbs-react-grid#readme",
   "devDependencies": {
     "@types/enzyme": "^3.9.0",
     "@types/enzyme-adapter-react-16": "^1.0.5",
