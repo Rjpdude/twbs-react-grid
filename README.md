@@ -33,17 +33,29 @@ This package provides three grid elements - `Container`, `Row`, and `Col`. While
 
 ## Container
 
+```js
+import { Container } from 'twbs-react-grid'
+```
+
 | Property | Details | Possible Values | Default Value |
 | :------- |:--------| :---------------| :-------------|
 |fluid|Controls whether the container should assume a fluid width *(100% across viewports)* or a responsive pixel width.|`boolean`|`false`
 
 ## Row
 
+```js
+import { Row } from 'twbs-react-grid'
+```
+
 | Property | Details | Possible Values | Default Value |
 | :------- |:--------| :---------------| :-------------|
 |noGutters|When true, it disables the margin of the row and the padding of it's columns.|`boolean`|`false`
 
-## Column
+## Col
+
+```js
+import { Col } from 'twbs-react-grid'
+```
 
 | Property | Details | Possible Values |
 | :------- | :------ | --------------: |
@@ -53,7 +65,14 @@ This package provides three grid elements - `Container`, `Row`, and `Col`. While
 # Example
 ```js
 import React from 'react'
-import { Container, Row, Col, Flex, Display } from 'twbs-react-grid'
+
+import { 
+  Container, 
+  Row, 
+  Col, 
+  Flex,
+  Display 
+} from 'twbs-react-grid'
 
 const SimpleGrid = () => (
   <Container>
