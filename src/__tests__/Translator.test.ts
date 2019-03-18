@@ -24,18 +24,22 @@ describe('Translator', () => {
       shrink: 0,
 
       // margin
-      margin: 'auto',
-      marginTop: 5,
-      marginBottom: 4,
-      marginLeft: 3,
-      marginRight: 2,
+      m: 'auto',
+      mT: 5,
+      mB: 4,
+      mY: 'auto',
+      mL: 3,
+      mR: 2,
+      mX: 'auto',
 
       // padding
-      padding: 5,
-      paddingTop: 4,
-      paddingBottom: 3,
-      paddingLeft: 2,
-      paddingRight: 1,
+      p: 5,
+      pT: 4,
+      pB: 3,
+      pY: 0,
+      pL: 2,
+      pR: 1,
+      pX: 0,
     }
 
     const expectedTranslations = [
@@ -54,6 +58,13 @@ describe('Translator', () => {
       'flex-fill',
       'flex-grow-1',
       'flex-shrink-0',
+      'm-auto',
+      'mt-5',
+      'mb-4',
+      'my-auto',
+      'ml-3',
+      'mr-2',
+      'mx-auto',
     ]
 
     const translation = translateElement(element as Elements.GridElement)

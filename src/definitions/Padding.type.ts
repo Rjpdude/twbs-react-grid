@@ -1,11 +1,13 @@
 type PaddingValue = 0 | 1 | 2 | 3 | 4 | 5
 
 interface PaddingProperties {
-  padding: PaddingValue
-  paddingTop: PaddingValue
-  paddingBottom: PaddingValue
-  paddingLeft: PaddingValue
-  paddingRight: PaddingValue
+  p: PaddingValue
+  pT: PaddingValue
+  pB: PaddingValue
+  pY: PaddingValue
+  pL: PaddingValue
+  pR: PaddingValue
+  pX: PaddingValue
 }
 
 export { PaddingValue, PaddingProperties }
