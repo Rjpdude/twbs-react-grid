@@ -23,8 +23,6 @@ import {
   Row, 
   Col, 
   Flex, 
-  Display, 
-  Margin, 
-  Padding 
+  Display
 } from 'twbs-react-grid'
 ```
