@@ -1,4 +1,4 @@
-import { Translator } from '../../Types'
+import { Translator } from '../../'
 
 const PaddingTranslator: Translator = {
   translateProperty: (breakPoint, property, element) => {

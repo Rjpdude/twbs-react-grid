@@ -1,4 +1,4 @@
-import { Translator } from '../../Types'
+import { Translator } from '../../'
 
 const ElementTranslator: Translator = {
   translateProperty: (breakPoint, property, element) => {
@@ -11,7 +11,7 @@ const ElementTranslator: Translator = {
         return Array.isArray(element.classNames) ? element.classNames.join(' ') : element.classNames
     }
     return ''
-  }
+  },
 }
 
 export default ElementTranslator

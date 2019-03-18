@@ -4,7 +4,7 @@ import { FlexProperties } from './Flex.type'
 import { MarginProperties } from './Margin.type'
 import { PaddingProperties } from './Padding.type'
 
-type BaseElement = FlexProperties & MarginProperties & PaddingProperties 
+type BaseElement = FlexProperties & MarginProperties & PaddingProperties
 
 interface GridElement extends BaseElement {
   size: ColumnSize

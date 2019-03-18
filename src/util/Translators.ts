@@ -1,4 +1,4 @@
-import { Translator } from '../Types'
+import { Translator } from '../'
 
 import ElementTranslator from './translation/Element.translator'
 import FlexTranslator from './translation/Flex.translator'

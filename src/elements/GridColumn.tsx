@@ -1,5 +1,5 @@
 import React from 'react'
-import { BreakPoint, ColumnSize, Elements, PropType } from '../Types'
+import { BreakPoint, ColumnSize, Elements, PropType } from '../'
 import { translateElement, translateProperty } from '../util/Util'
 
 const breakPoints = ['sm', 'md', 'lg', 'xl']

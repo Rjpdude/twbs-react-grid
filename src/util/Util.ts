@@ -1,4 +1,4 @@
-import { Elements } from '../Types'
+import { Elements } from '../'
 import Translators from './Translators'
 
 export const translateProperty = (

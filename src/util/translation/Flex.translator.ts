@@ -1,4 +1,4 @@
-import { Flex, Translator } from '../../Types'
+import { Flex, Translator } from '../../'
 
 const FlexTranslator: Translator = {
   translateProperty: (breakPoint, property, element) => {

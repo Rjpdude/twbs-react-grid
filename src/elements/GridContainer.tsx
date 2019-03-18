@@ -1,5 +1,5 @@
 import React from 'react'
-import { Elements, PropType } from '../Types'
+import { Elements, PropType } from '../'
 import { translateElement } from '../util/Util'
 
 interface Props extends Elements.FixedElement {
