@@ -47,8 +47,8 @@ This package provides three grid elements - `Container`, `Row`, and `Col`. While
 
 | Property | Details | Possible Values |
 | :------- | :------ | --------------: |
-|size|The `xs` breakpoint and default size of the column. Defaults to `equal`.|`1` to `12`<br>`equal`<br>`auto`
-|sm<br>md<br>lg<br>xl| Each breakpoint can either be a number/string representing it's size, or an object of Grid Element Properties.  |`1` to `12`<br>`equal`<br>`auto`<br>`{}` of [Grid Element Properties](#grid-element-properties)
+|size|The `xs` breakpoint and default size of the column. Defaults to `"equal"`.|`1` to `12`<br>`"equal"`<br>`"auto"`
+|sm<br>md<br>lg<br>xl| Each breakpoint can either be a number/string representing it's size, or an object of Grid Element Properties.  |`1` to `12`<br>`"equal"`<br>`"auto"`<br>`{}` of [Grid Element Properties](#grid-element-properties)
 
 # Example
 ```js
@@ -72,9 +72,9 @@ const SimpleGrid = () => (
 
     // Wrapped Columns
     <Row>
-      <Col size={3}>1/4th</Col>
-      <Col>2/4th</Col>
-      <Col size={3}>1/4th</Col>
+      <Col size={3}>1/4</Col>
+      <Col>2/4</Col>
+      <Col size={3}>1/4</Col>
     </Row>
 
     // Responsive Columns
