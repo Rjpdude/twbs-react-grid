@@ -22,7 +22,7 @@ const FlexTranslator: Translator = {
       case 'reverse':
         return `flex${breakPoint}-${element.direction || Flex.Direction.Row}-reverse`
       case 'fill':
-        return `flex${breakPoint}-fill`
+        return element.fill === true ? `flex${breakPoint}-fill` : ''
       case 'grow':
         return `flex${breakPoint}-grow-${element.grow}`
       case 'shrink':
