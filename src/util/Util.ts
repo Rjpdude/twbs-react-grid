@@ -26,3 +26,5 @@ export const translateElement = (element: Elements.GridElement, breakPoint: stri
     },
     [] as string[],
   )
+
+export const joinElementProperties = (properties: string[]) => properties.join(' ').trim()

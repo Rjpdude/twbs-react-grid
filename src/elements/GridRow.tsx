@@ -1,16 +1,16 @@
 import React from 'react'
 import { Elements, PropType } from '../'
-import { translateElement } from '../util/Util'
+import * as Util from '../util/Util'
 
 interface Props extends Elements.FixedElement {
   noGutters: boolean
 }
 
 export default (props: PropType<Props>) => {
-  const row = translateElement(props as Elements.GridElement)
+  const row = Util.translateElement(props as Elements.GridElement)
   if (props.noGutters) {
     row.push('no-gutters')
   }
   row.push('row')
-  return <div className={row.join(' ')}>{props.children}</div>
+  return <div className={Util.joinElementProperties(row)}>{props.children}</div>
 }

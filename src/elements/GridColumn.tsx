@@ -1,6 +1,6 @@
 import React from 'react'
 import { BreakPoint, ColumnSize, Elements, PropType } from '../'
-import { translateElement, translateProperty } from '../util/Util'
+import * as Util from '../util/Util'
 
 const breakPoints = ['sm', 'md', 'lg', 'xl']
 
@@ -19,16 +19,16 @@ const GridColumn = (props: PropType<Props>) => {
       if (isBreakPoint) {
         const elementToTranslate =
           typeof property === 'object' ? property : ({ size: property as ColumnSize } as Elements.GridElement)
-        list.push(...translateElement(elementToTranslate, `-${propName}`))
+        list.push(...Util.translateElement(elementToTranslate, `-${propName}`))
       } else {
-        list.push(translateProperty(props as Elements.GridElement, propName as keyof Elements.GridElement))
+        list.push(Util.translateProperty(props as Elements.GridElement, propName as keyof Elements.GridElement))
       }
       return list
     },
     [] as string[],
   )
 
-  return <div className={column.join(' ')}>{props.children}</div>
+  return <div className={Util.joinElementProperties(column)}>{props.children}</div>
 }
 
 GridColumn.defaultProps = {
