@@ -27,7 +27,9 @@ import {
 } from 'twbs-react-grid'
 ```
 
-Examples to follow...  Please submit PR requests
+Examples to follow  Please submit PR requests.
+
+WIP: [GitHub Page](https://twbs-react-grid.github.io/)
 
 # Grid Elements
 
