@@ -27,6 +27,8 @@ import {
 } from 'twbs-react-grid'
 ```
 
+Examples to follow...  Please submit PR requests
+
 # Grid Elements
 
 This package provides three grid elements - `Container`, `Row`, and `Col`. While all of them have access to the properties outlined below (see [Grid Element Properties](#grid-element-properties)), each of them have their own individual properties.
@@ -179,3 +181,5 @@ The margin and padding properties are provided as shorthand identifiers. For exa
 |classNames *|`string`<br>`string[]`|`classNames="tick tock"`<br>`classNames={['tick', 'tock']}`
 
 **- The `classNames` property is not available on column breakpoints, but it is available on the column itself.*
+
+Please provide comments, feedback and PR's
