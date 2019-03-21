@@ -6,6 +6,7 @@ enum Display {
   Table = 'table',
   TableRow = 'table-row',
   TableCell = 'table-cell',
+  Flex = 'flex',
 }
 
 export default Display
