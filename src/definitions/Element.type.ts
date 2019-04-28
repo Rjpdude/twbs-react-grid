@@ -1,3 +1,4 @@
+import React from 'react'
 import ColumnSize from './ColumnSize.type'
 import Display from './Display.type'
 import { FlexProperties } from './Flex.type'
@@ -10,7 +11,7 @@ interface GridElement extends BaseElement {
   size: ColumnSize
   display: Display
   classNames: string | string[]
-  children: JSX.Element | JSX.Element[]
+  children: React.ReactNode
 }
 
 type FixedElement = Pick<GridElement, Exclude<keyof GridElement, 'size'>>
