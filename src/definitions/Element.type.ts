@@ -11,6 +11,7 @@ interface GridElement extends BaseElement {
   size: ColumnSize
   display: Display
   classNames: string | string[]
+  className: string
   children: React.ReactNode
 }
 

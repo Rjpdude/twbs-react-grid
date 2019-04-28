@@ -9,5 +9,8 @@ interface Props extends Elements.FixedElement {
 export default (props: PropType<Props>) => {
   const container = Util.translateElement(props as Elements.GridElement)
   container.push(props.fluid ? 'container-fluid' : 'container')
+  if (props.className) {
+    container.push(props.className)
+  }
   return <div className={Util.joinElementProperties(container)}>{props.children}</div>
 }

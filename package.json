@@ -1,7 +1,7 @@
 {
   "name": "twbs-react-grid",
-  "version": "1.2.0",
-  "version_short": "1.1",
+  "version": "1.2.1",
+  "version_short": "1.2",
   "description": "Twitter Bootstrap 4 Standalone Flexbox Grid System for React",
   "keywords": [
     "react-bootstrap-grid",

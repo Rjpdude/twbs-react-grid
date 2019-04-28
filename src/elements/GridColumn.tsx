@@ -28,6 +28,10 @@ const GridColumn = (props: PropType<Props>) => {
     [] as string[],
   )
 
+  if (props.className) {
+    column.push(props.className)
+  }
+  
   return <div className={Util.joinElementProperties(column)}>{props.children}</div>
 }
 
