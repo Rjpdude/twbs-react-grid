@@ -26,7 +26,7 @@ export const translateElement = (element: Elements.GridElement, breakPoint: stri
         const translatedProperty = translateProperty(element, propertyName as keyof Elements.GridElement, breakPoint)
         if (translatedProperty !== '') {
           list.classNames.push(translatedProperty)
-        } else {
+        } else if (propertyName !== 'fluid' && propertyName !== 'noGutters') {
           list.DOMProps[propertyName as keyof React.HTMLAttributes<HTMLDivElement>] = element[propertyName as keyof React.HTMLAttributes<HTMLDivElement>]
         }
       }

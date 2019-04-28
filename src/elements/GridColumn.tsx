@@ -1,6 +1,7 @@
 import React from 'react'
 import { BreakPoint, ColumnSize, Elements, PropType } from '../'
 import * as Util from '../util/Util'
+import { jsxAttribute } from '@babel/types';
 
 const breakPoints = ['sm', 'md', 'lg', 'xl']
 
@@ -12,7 +13,7 @@ interface Props extends Elements.GridElement {
 }
 
 const GridColumn = (props: PropType<Props>) => {
-  const DOMProps: Array<React.HTMLAttributes<HTMLDivElement>> = []
+  const DOMProps: React.HTMLAttributes<HTMLDivElement> = {}
   
   const column = Object.keys(props).reduce(
     (list, propName) => {
@@ -27,7 +28,7 @@ const GridColumn = (props: PropType<Props>) => {
       } else {
         const translatedProperty = Util.translateProperty(props as Elements.GridElement, propName as keyof Elements.GridElement)
         if (translatedProperty === '') {
-          DOMProps.push(property)
+          DOMProps[propName as keyof React.HTMLAttributes<HTMLDivElement>] = property
         } else {
           list.push(translatedProperty)
         }
@@ -36,7 +37,7 @@ const GridColumn = (props: PropType<Props>) => {
     },
     [] as string[],
   )
-  
+
   return <div {...DOMProps} className={Util.joinElementProperties(column)}>{props.children}</div>
 }
 
