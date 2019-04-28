@@ -1,7 +1,6 @@
 import React from 'react'
 import { BreakPoint, ColumnSize, Elements, PropType } from '../'
 import * as Util from '../util/Util'
-import { jsxAttribute } from '@babel/types';
 
 const breakPoints = ['sm', 'md', 'lg', 'xl']
 
