@@ -5,14 +5,12 @@ import { FlexProperties } from './Flex.type'
 import { MarginProperties } from './Margin.type'
 import { PaddingProperties } from './Padding.type'
 
-type BaseElement = FlexProperties & MarginProperties & PaddingProperties
+type BaseElement = React.HTMLAttributes<HTMLDivElement> & FlexProperties & MarginProperties & PaddingProperties
 
 interface GridElement extends BaseElement {
   size: ColumnSize
   display: Display
   classNames: string | string[]
-  className: string
-  children: React.ReactNode
 }
 
 type FixedElement = Pick<GridElement, Exclude<keyof GridElement, 'size'>>

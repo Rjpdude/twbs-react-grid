@@ -15,16 +15,24 @@ export const translateProperty = (
   return ''
 }
 
-export const translateElement = (element: Elements.GridElement, breakPoint: string = ''): string[] =>
+export const translateElement = (element: Elements.GridElement, breakPoint: string = '') =>
   Object.keys(element).reduce(
     (list, propertyName) => {
-      const translatedProperty = translateProperty(element, propertyName as keyof Elements.GridElement, breakPoint)
-      if (translatedProperty !== '') {
-        list.push(translatedProperty)
+      if (propertyName === 'className') {
+        if (breakPoint === '') {
+          list.classNames.push(element[propertyName as keyof Elements.GridElement])
+        }
+      } else {
+        const translatedProperty = translateProperty(element, propertyName as keyof Elements.GridElement, breakPoint)
+        if (translatedProperty !== '') {
+          list.classNames.push(translatedProperty)
+        } else {
+          list.DOMProps[propertyName as keyof React.HTMLAttributes<HTMLDivElement>] = element[propertyName as keyof React.HTMLAttributes<HTMLDivElement>]
+        }
       }
       return list
     },
-    [] as string[],
+    {classNames: [] as string[], DOMProps: {} as React.HTMLAttributes<HTMLDivElement> },
   )
 
 export const joinElementProperties = (properties: string[]) => properties.join(' ').trim()

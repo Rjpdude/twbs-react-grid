@@ -12,27 +12,32 @@ interface Props extends Elements.GridElement {
 }
 
 const GridColumn = (props: PropType<Props>) => {
+  const DOMProps: Array<React.HTMLAttributes<HTMLDivElement>> = []
+  
   const column = Object.keys(props).reduce(
     (list, propName) => {
-      const property = props[propName as keyof Props] as Elements.GridElement
+      const property = props[propName as keyof Props]
       const isBreakPoint = breakPoints.indexOf(propName) !== -1
-      if (isBreakPoint) {
+      if (propName === 'className') {
+        list.push(property as string)
+      } else if (isBreakPoint) {
         const elementToTranslate =
           typeof property === 'object' ? property : ({ size: property as ColumnSize } as Elements.GridElement)
-        list.push(...Util.translateElement(elementToTranslate, `-${propName}`))
+        list.push(...Util.translateElement(elementToTranslate, `-${propName}`).classNames)
       } else {
-        list.push(Util.translateProperty(props as Elements.GridElement, propName as keyof Elements.GridElement))
+        const translatedProperty = Util.translateProperty(props as Elements.GridElement, propName as keyof Elements.GridElement)
+        if (translatedProperty === '') {
+          DOMProps.push(property)
+        } else {
+          list.push(translatedProperty)
+        }
       }
       return list
     },
     [] as string[],
   )
-
-  if (props.className) {
-    column.push(props.className)
-  }
   
-  return <div className={Util.joinElementProperties(column)}>{props.children}</div>
+  return <div {...DOMProps} className={Util.joinElementProperties(column)}>{props.children}</div>
 }
 
 GridColumn.defaultProps = {

@@ -8,12 +8,12 @@ interface Props extends Elements.FixedElement {
 
 export default (props: PropType<Props>) => {
   const row = Util.translateElement(props as Elements.GridElement)
-  row.push('row')
+  row.classNames.push('row')
   if (props.noGutters) {
-    row.push('no-gutters')
+    row.classNames.push('no-gutters')
   }
   if (props.className) {
-    row.push(props.className)
+    row.classNames.push(props.className)
   }
-  return <div className={Util.joinElementProperties(row)}>{props.children}</div>
+  return <div {...row.DOMProps} className={Util.joinElementProperties(row.classNames)}>{props.children}</div>
 }

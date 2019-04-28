@@ -3,6 +3,8 @@ import { translateElement, translateProperty } from '../util/Util'
 
 describe('Translator', () => {
   it('Accurately ranslates an entire element', () => {
+    const onClick = jest.fn()
+
     const element: Partial<Elements.GridElement> = {
       // base properties
       size: 10,
@@ -40,6 +42,8 @@ describe('Translator', () => {
       pL: 2,
       pR: 1,
       pX: 0,
+
+      onClick,
     }
 
     const expectedTranslations = [
@@ -68,7 +72,9 @@ describe('Translator', () => {
     ]
 
     const translation = translateElement(element as Elements.GridElement)
-    expectedTranslations.forEach((expected) => expect(translation).toContain(expected))
+    expectedTranslations.forEach((expected) => expect(translation.classNames).toContain(expected))
+
+    expect(translation.DOMProps.onClick).toBe(onClick)
   })
 
   it('Accurately translates a singular property', () => {
