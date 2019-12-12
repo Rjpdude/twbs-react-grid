@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Theme Context obj Exports context obj 1`] = `
+exports[`Context obj Exports context obj 1`] = `
 Object {
   "$$typeof": Symbol(react.context),
   "Consumer": Object {

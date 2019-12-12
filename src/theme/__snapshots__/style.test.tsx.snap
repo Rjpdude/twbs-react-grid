@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Theme style Global theme style 1`] = `
+exports[`Global theme style 1`] = `
 Array [
   "
   html {

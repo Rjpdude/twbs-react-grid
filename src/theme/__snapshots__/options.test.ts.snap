@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Theme Options Default theme function 1`] = `
+exports[`Default theme function 1`] = `
 Object {
   "lg": 992,
   "lgWidth": 960,
