@@ -72,7 +72,7 @@ export const Col = configureElement<ColumnProps>(
   ['size', 'sm', 'md', 'lg', 'xl']
 )
 
-function assignBreakpointStyle(
+export function assignBreakpointStyle(
   props: Partial<ColumnProps>,
   theme: ThemeOptions,
   breakpointId: keyof ColumnProps,
@@ -101,7 +101,7 @@ function assignBreakpointStyle(
   )
 }
 
-function generateBreakpointStyle(
+export function generateBreakpointStyle(
   breakpointId: keyof ColumnProps,
   size: BreakpointVal
 ) {
@@ -114,7 +114,7 @@ function generateBreakpointStyle(
     : breakpointStyle(size)
 }
 
-function initialColStyle({ spacing }: ThemeOptions): CSSObject {
+export function initialColStyle({ spacing }: ThemeOptions): CSSObject {
   const padding = `${spacing}px`
   return {
     width: '100%',
@@ -124,7 +124,7 @@ function initialColStyle({ spacing }: ThemeOptions): CSSObject {
   }
 }
 
-function breakpointStyle(breakpointVal: number): CSSObject {
+export function breakpointStyle(breakpointVal: number): CSSObject {
   const size = ((100 / 12) * breakpointVal).toFixed(6)
   return {
     flex: `0 0 ${size}%`,
@@ -132,13 +132,13 @@ function breakpointStyle(breakpointVal: number): CSSObject {
   }
 }
 
-const breakpointStyleAuto: CSSObject = {
+export const breakpointStyleAuto: CSSObject = {
   width: 'auto',
   maxWidth: '100%',
   flex: '0 0 auto'
 }
 
-const breakpointStyleEqual: CSSObject = {
+export const breakpointStyleEqual: CSSObject = {
   maxWidth: '100%',
   flexBasis: 0,
   flexGrow: 1

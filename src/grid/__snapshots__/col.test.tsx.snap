@@ -1,0 +1,299 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Applies element style properties on breakpoints 1`] = `
+.c0 {
+  width: 100%;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 100%;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    padding: 16px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+  }
+}
+
+<div
+  className="c0"
+>
+  <p>
+    child
+  </p>
+</div>
+`;
+
+exports[`Applies element style properties on root column 1`] = `
+.c0 {
+  width: 100%;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 100%;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  padding: 16px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+}
+
+<div
+  className="c0"
+>
+  <p>
+    child
+  </p>
+</div>
+`;
+
+exports[`Applies padding and breakpoints from context 1`] = `
+.c0 {
+  width: 100%;
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+  -webkit-flex: 0 0 100.000000%;
+  -ms-flex: 0 0 100.000000%;
+  flex: 0 0 100.000000%;
+  max-width: 100.000000%;
+}
+
+@media (min-width:1px) {
+  .c0 {
+    -webkit-flex: 0 0 83.333333%;
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+}
+
+@media (min-width:3px) {
+  .c0 {
+    -webkit-flex: 0 0 66.666667%;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+}
+
+@media (min-width:5px) {
+  .c0 {
+    -webkit-flex: 0 0 50.000000%;
+    -ms-flex: 0 0 50.000000%;
+    flex: 0 0 50.000000%;
+    max-width: 50.000000%;
+  }
+}
+
+@media (min-width:7px) {
+  .c0 {
+    -webkit-flex: 0 0 33.333333%;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+<div
+  className="c0"
+>
+  <p>
+    child
+  </p>
+</div>
+`;
+
+exports[`Breakpoint media 1`] = `
+.c0 {
+  width: 100%;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  -webkit-flex: 0 0 100.000000%;
+  -ms-flex: 0 0 100.000000%;
+  flex: 0 0 100.000000%;
+  max-width: 100.000000%;
+}
+
+@media (min-width:576px) {
+  .c0 {
+    -webkit-flex: 0 0 83.333333%;
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+}
+
+@media (min-width:768px) {
+  .c0 {
+    -webkit-flex: 0 0 66.666667%;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+}
+
+@media (min-width:992px) {
+  .c0 {
+    -webkit-flex: 0 0 50.000000%;
+    -ms-flex: 0 0 50.000000%;
+    flex: 0 0 50.000000%;
+    max-width: 50.000000%;
+  }
+}
+
+@media (min-width:1200px) {
+  .c0 {
+    -webkit-flex: 0 0 33.333333%;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+<div
+  className="c0"
+>
+  <p>
+    child
+  </p>
+</div>
+`;
+
+exports[`Breakpoint media sizing from nested element obj 1`] = `
+.c0 {
+  width: 100%;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 100%;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+@media (min-width:576px) {
+  .c0 {
+    -webkit-flex: 0 0 83.333333%;
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+  }
+}
+
+@media (min-width:768px) {
+  .c0 {
+    -webkit-flex: 0 0 66.666667%;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+}
+
+@media (min-width:992px) {
+  .c0 {
+    -webkit-flex: 0 0 50.000000%;
+    -ms-flex: 0 0 50.000000%;
+    flex: 0 0 50.000000%;
+    max-width: 50.000000%;
+  }
+}
+
+@media (min-width:1200px) {
+  .c0 {
+    -webkit-flex: 0 0 33.333333%;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+<div
+  className="c0"
+>
+  <p>
+    child
+  </p>
+</div>
+`;
+
+exports[`Default col (auto) 1`] = `
+.c0 {
+  width: auto;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 100%;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+<div
+  className="c0"
+>
+  <p>
+    child
+  </p>
+</div>
+`;
+
+exports[`Default col (equal) 1`] = `
+.c0 {
+  width: 100%;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 100%;
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+<div
+  className="c0"
+>
+  <p>
+    child
+  </p>
+</div>
+`;
