@@ -69,17 +69,10 @@ describe('getMergedTheme', () => {
 
   test('Merges supplied theme options', () => {
     const options = { spacing: 18, xlWidth: 1200 }
-    const defaultTheme = getDefaultTheme()
     const merged = Theme.getMergedTheme(options)
 
-    Object.entries(options).forEach(([key, value]) => {
-      expect(merged[key]).toBe(value)
-    })
-
-    Object.entries(merged).forEach(([key, value]) => {
-      if (!options[key]) {
-        expect(value).toEqual(defaultTheme[key])
-      }
-    })
+    expect(merged.spacing).toBe(18)
+    expect(merged.xlWidth).toBe(1200)
+    expect(merged).toMatchSnapshot()
   })
 })

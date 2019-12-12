@@ -33,7 +33,7 @@ function initialRowStyle(
   { spacing }: ThemeOptions,
   noGutters: boolean
 ): CSSObject {
-  const margin = noGutters ? 0 : `${spacing}px`
+  const margin = noGutters ? 0 : `-${spacing}px`
   return {
     display: 'flex',
     flexWrap: 'wrap',
