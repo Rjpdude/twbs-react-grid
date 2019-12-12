@@ -12,7 +12,7 @@ export function GridTheme(props: PropsWithChildren<Partial<ThemeOptions>>) {
   return createElement(
     gridThemeContext.Provider,
     context,
-    style,
+    props.themeStyle !== false && style,
     props.children
   )
 }

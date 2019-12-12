@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
+import { css, createGlobalStyle } from 'styled-components'
 
-export const GridThemeStyle = createGlobalStyle`
+export const Global = css`
   html {
     box-sizing: border-box;
     -ms-overflow-style: scrollbar;
@@ -11,4 +11,8 @@ export const GridThemeStyle = createGlobalStyle`
   *::after {
     box-sizing: inherit;
   }
+`
+
+export const GridThemeStyle = createGlobalStyle`
+  ${Global}
 `

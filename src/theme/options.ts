@@ -1,5 +1,11 @@
 export interface ThemeOptions {
   /**
+   * Whether to apply the global grid theme style.
+   *
+   * @default true
+   */
+  themeStyle: boolean
+  /**
    * The `margin` and `padding` in pixels for all grid elements.
    *
    * @default 15
@@ -57,6 +63,7 @@ export interface ThemeOptions {
 
 export function getDefaultTheme(): ThemeOptions {
   return {
+    themeStyle: true,
     spacing: 15,
     sm: 576,
     smWidth: 540,
