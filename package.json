@@ -21,7 +21,7 @@
   "scripts": {
     "demo": "webpack-dev-server --config scripts/webpack.config.js",
     "build": "tsc",
-    "test": "jest --config jestconfig.json",
+    "test": "jest --config ./config/jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",

@@ -2,4 +2,3 @@ node_modules
 /lib
 .vscode
 .DS_STORE
-dev-server/build
