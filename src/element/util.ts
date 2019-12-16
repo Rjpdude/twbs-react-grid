@@ -1,11 +1,11 @@
 import { CSSObject } from 'styled-components'
 import { GridElementStyleMapper, GridElementProperties } from './interface'
 
-export function getElementPropertyStyle(
+export const getElementPropertyStyle = (
   gridPropertyStyleMap: any,
   propertyKey: string,
   propertyValue: any
-): CSSObject {
+): CSSObject => {
   const propertyStyleFunc = isElementSpacingProp(propertyKey)
     ? mapSpacingStyle
     : gridPropertyStyleMap[propertyKey]
@@ -17,10 +17,10 @@ export function getElementPropertyStyle(
   return style || {}
 }
 
-export function mapPropertyStyle<K extends keyof GridElementProperties>(
+export const mapPropertyStyle = <K extends keyof GridElementProperties>(
   styleMapper?: keyof CSSObject | GridElementStyleMapper<K>,
   allowedValues?: Array<GridElementProperties[K]>
-): GridElementStyleMapper<K> {
+): GridElementStyleMapper<K> => {
   return (val, propKey) => {
     if (verifyStyleValue(val, propKey, allowedValues)) {
       return typeof styleMapper === 'function'
@@ -39,38 +39,31 @@ export const mapSpacingStyle = mapPropertyStyle((spacingVal, spacingId) => {
 
   return suffix === 'X' || suffix === 'Y'
     ? {
-        [`${baseId}-${suffix === 'X' ? 'top' : 'right'}`]: val,
-        [`${baseId}-${suffix === 'X' ? 'bottom' : 'left'}`]: val
+        [`${baseId}${suffix === 'X' ? 'Top' : 'Right'}`]: val,
+        [`${baseId}${suffix === 'X' ? 'Bottom' : 'Left'}`]: val
       }
     : {
         [!suffix
           ? baseId
-          : `${baseId}-${
+          : `${baseId}${
               suffix === 'T'
-                ? 'top'
+                ? 'Top'
                 : suffix === 'B'
-                ? 'bottom'
+                ? 'Bottom'
                 : suffix === 'R'
-                ? 'right'
+                ? 'Right'
                 : suffix === 'L'
-                ? 'left'
+                ? 'Left'
                 : ''
             }`]: val
       }
 })
 
-export function isElementSpacingProp(propertyKey: string) {
-  return (
-    propertyKey.length <= 2 &&
-    (propertyKey.startsWith('m') || propertyKey.startsWith('p'))
-  )
-}
-
-export function verifyStyleValue(
+export const verifyStyleValue = (
   value: any,
   propKey: string,
   allowedValues?: any[]
-) {
+) => {
   const invalidVal =
     !['string', 'number', 'boolean'].includes(typeof value) ||
     allowedValues?.includes(value) === false
@@ -85,3 +78,7 @@ export function verifyStyleValue(
 
   return !invalidVal
 }
+
+export const isElementSpacingProp = (propertyKey: string) =>
+  propertyKey.length <= 2 &&
+  (propertyKey.startsWith('m') || propertyKey.startsWith('p'))

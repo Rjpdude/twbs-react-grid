@@ -156,4 +156,3 @@ export const fill = mapPropertyStyle<'fill'>(
     },
   [true, false]
 )
-    
