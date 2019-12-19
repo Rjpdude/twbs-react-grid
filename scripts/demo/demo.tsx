@@ -13,17 +13,35 @@ const Box = styled.div<{ bg: string }>`
 
 function App() {
   return (
-    <GridTheme spacing={12} xlWidth={1264}>
-      <Container>
-        <Row>
-          <Col mB={24}>
-            <Box bg="#0099cc">Box 1</Box>
+    <GridTheme>
+      <Container size="md">
+        <Row colProps={{ mB: 24 }}>
+          <Col>
+            <Box bg="#21618C">Box 1</Box>
           </Col>
-          <Col mB={24}>
-            <Box bg="#5c358d">Box 2</Box>
+          <Col>
+            <Box bg="#F4D03F">Box 2</Box>
           </Col>
-          <Col mB={24} size={12} md="equal">
-            <Box bg="#ff9900">Box 3</Box>
+          <Col size={12} order="first" md={{ size: "equal", order: 'last' }}>
+            <Box bg="#AF7AC5">Box 3</Box>
+          </Col>
+        </Row>
+
+        <Row colSize={1} colProps={{ mB: 24 }} colSizeMd={2} colSizeXl={4}>
+          <Col>
+            <Box bg="#95A5A6">Box 1</Box>
+          </Col>
+
+          <Col>
+            <Box bg="#D35400">Box 2</Box>
+          </Col>
+
+          <Col size={6}>
+            <Box bg="#3498DB">Box 3</Box>
+          </Col>
+
+          <Col size={6}>
+            <Box bg="#52BE80">Box 4</Box>
           </Col>
         </Row>
       </Container>

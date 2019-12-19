@@ -1,19 +1,21 @@
 import styled from 'styled-components'
-import { useContext, createElement } from 'react'
+import { useContext, createElement, Children } from 'react'
 import { gridThemeContext } from '../theme/theme'
 import { getElementPropertyStyle, isElementSpacingProp } from './util'
 import * as gridPropertyStyleMap from './style'
 import {
   GridElementStyleGenerator,
   GridElementComponent,
-  GridElementContext
+  GridElementContext,
+  GridElementChildMapper
 } from './interface'
 
 const elementPropertyKeys = Object.keys(gridPropertyStyleMap)
 
 export function configureElement<T>(
   styleGenerator: GridElementStyleGenerator<T>,
-  propertyKeys: string[]
+  propertyKeys: string[],
+  childMap?: GridElementChildMapper<T>
 ): GridElementComponent<T> {
   const styledElement = generateStyledElement(styleGenerator)
 
@@ -37,7 +39,15 @@ export function configureElement<T>(
       }
     })
 
-    return createElement(styledElement, styledElementProps, props.children)
+    return createElement(
+      styledElement,
+      styledElementProps,
+      !childMap
+        ? props.children
+        : Children.map(props.children, (child) =>
+            childMap(child, styledElementProps.ownProps as T)
+          )
+    )
   }
 
   component.styledComponent = styledElement

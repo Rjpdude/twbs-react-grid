@@ -18,7 +18,7 @@ test('Default container', () => {
 test('Fluid container', () => {
   const output = renderer
     .create(
-      <Container fluid={true}>
+      <Container size="fluid">
         <p>child</p>
       </Container>
     )
@@ -48,7 +48,7 @@ test('Breakpoints', () => {
 })
 
 test('Breakpoints (fluid)', () => {
-  const outputFluid = renderer.create(<Container fluid={true} />).toJSON()
+  const outputFluid = renderer.create(<Container size="fluid" />).toJSON()
 
   // small
   expect(outputFluid).not.toHaveStyleRule('max-width', '540px', {
@@ -64,6 +64,69 @@ test('Breakpoints (fluid)', () => {
   })
   // extra-large
   expect(outputFluid).not.toHaveStyleRule('max-width', '1140px', {
+    media: '(min-width:1200px)'
+  })
+})
+
+test('Breakpoints (md)', () => {
+  const outputFluid = renderer.create(<Container size="md" />).toJSON()
+
+  // small
+  expect(outputFluid).not.toHaveStyleRule('max-width', '540px', {
+    media: '(min-width:576px)'
+  })
+  // medium
+  expect(outputFluid).toHaveStyleRule('max-width', '720px', {
+    media: '(min-width:768px)'
+  })
+  // large
+  expect(outputFluid).toHaveStyleRule('max-width', '960px', {
+    media: '(min-width:992px)'
+  })
+  // extra-large
+  expect(outputFluid).toHaveStyleRule('max-width', '1140px', {
+    media: '(min-width:1200px)'
+  })
+})
+
+test('Breakpoints (lg)', () => {
+  const outputFluid = renderer.create(<Container size="lg" />).toJSON()
+
+  // small
+  expect(outputFluid).not.toHaveStyleRule('max-width', '540px', {
+    media: '(min-width:576px)'
+  })
+  // medium
+  expect(outputFluid).not.toHaveStyleRule('max-width', '720px', {
+    media: '(min-width:768px)'
+  })
+  // large
+  expect(outputFluid).toHaveStyleRule('max-width', '960px', {
+    media: '(min-width:992px)'
+  })
+  // extra-large
+  expect(outputFluid).toHaveStyleRule('max-width', '1140px', {
+    media: '(min-width:1200px)'
+  })
+})
+
+test('Breakpoints (xl)', () => {
+  const outputFluid = renderer.create(<Container size="xl" />).toJSON()
+
+  // small
+  expect(outputFluid).not.toHaveStyleRule('max-width', '540px', {
+    media: '(min-width:576px)'
+  })
+  // medium
+  expect(outputFluid).not.toHaveStyleRule('max-width', '720px', {
+    media: '(min-width:768px)'
+  })
+  // large
+  expect(outputFluid).not.toHaveStyleRule('max-width', '960px', {
+    media: '(min-width:992px)'
+  })
+  // extra-large
+  expect(outputFluid).toHaveStyleRule('max-width', '1140px', {
     media: '(min-width:1200px)'
   })
 })

@@ -19,7 +19,7 @@ test('Default row', () => {
 test('No gutters', () => {
   const output = renderer
     .create(
-      <Row noGutters={true}>
+      <Row gutters={false}>
         <p>child</p>
       </Row>
     )

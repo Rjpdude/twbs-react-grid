@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes } from 'react'
+import { ReactNode, FunctionComponent, HTMLAttributes } from 'react'
 import { StyledComponent, CSSObject } from 'styled-components'
 import { ThemeOptions } from '../theme/options'
 import * as StyleMap from './style'
@@ -25,6 +25,11 @@ export type GridElementStyleMapper<K extends keyof GridElementProperties> = (
   val: GridElementProperties[K],
   key?: K
 ) => CSSObject
+
+export type GridElementChildMapper<T> = (
+  child: ReactNode,
+  props: T
+) => ReactNode
 
 export type GridElementProperties = GridElementStyleProperties &
   GridElementSpacingProperties
