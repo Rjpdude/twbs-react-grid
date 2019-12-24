@@ -34,6 +34,7 @@ This package offers all of the main grid layout elements supplied by Bootstrap (
 * [Row](#row)
 * [Column](#column)
 * [Element Properties](#element-properties)
+* [Demo](#demo)
 
 ## Installation
 
@@ -148,3 +149,16 @@ For more fine grained control, [Column](#column) elements can also set their pro
 |order|Controls the element's CSS **order** property. This property is ideally used to dynamically re-order columns. See [Reordering](https://getbootstrap.com/docs/4.4/layout/grid/#reordering) for more info.|`first`, `last`, `0-12`
 |offset|This property is used to dynamically offset columns. See [Offsetting Columns](https://getbootstrap.com/docs/4.4/layout/grid/#offsetting-columns) for more info.|`1-11`
 |m *and* p<br>mX *and* pX<br>mY *and* pY<br>mT *and* pT<br>mB *and* pB<br>mL *and* pL<br>mR *and* pR|Spacing properties are used to control the element's margin and padding. Spacing values can either be numeric (in pixels) or string values (such as `auto` or `2em`).|-
+
+## Demo
+
+This repo is configured to run a local demo through a basic `webpack-dev-server` configuration on port 7200. To run the demo locally, simply run the following commands:
+
+```
+git clone https://github.com/Rjpdude/twbs-react-grid.git
+cd twbs-react-grid
+npm install
+npm run demo
+```
+
+The demo application is configured to run through the `scripts/demo/demo.tsx` file.
