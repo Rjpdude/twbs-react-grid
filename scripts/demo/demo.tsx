@@ -14,7 +14,7 @@ const Box = styled.div<{ bg: string }>`
 function App() {
   return (
     <GridTheme>
-      <Container size="md">
+      <Container size="lg">
         <Row col_props={{ mB: 24 }}>
           <Col>
             <Box bg="#21618C">Box 1</Box>
