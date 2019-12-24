@@ -15,14 +15,14 @@ function App() {
   return (
     <GridTheme>
       <Container size="lg">
-        <Row col_props={{ mB: 24 }}>
+        <Row cols={1} cols_md={3} mB={24} gutters={false}>
           <Col>
             <Box bg="#21618C">Box 1</Box>
           </Col>
           <Col>
             <Box bg="#F4D03F">Box 2</Box>
           </Col>
-          <Col size={12} order="first" md={{ size: "equal", order: 'last' }}>
+          <Col>
             <Box bg="#AF7AC5">Box 3</Box>
           </Col>
         </Row>
