@@ -47,7 +47,7 @@ export interface ColumnProps {
 }
 
 export type BreakpointSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
-export type BreakpointVal = 'equal' | 'auto' | BreakpointSize
+export type BreakpointVal = 'equal' | 'auto' | string | BreakpointSize
 export type BreakpointPropVal = BreakpointVal | GridElement<GridColumn>
 
 export const Col = configureElement<ColumnProps>(
@@ -122,11 +122,14 @@ export function initialColStyle({ spacing }: ThemeOptions): CSSObject {
   }
 }
 
-export function breakpointStyle(breakpointVal: number): CSSObject {
-  const size = ((100 / 12) * breakpointVal).toFixed(6)
+export function breakpointStyle(breakpointVal: string | number): CSSObject {
+  const size =
+    typeof breakpointVal === 'string'
+      ? breakpointVal
+      : `${((100 / 12) * breakpointVal).toFixed(6)}%`
   return {
-    flex: `0 0 ${size}%`,
-    maxWidth: `${size}%`
+    flex: `0 0 ${size}`,
+    maxWidth: `${size}`
   }
 }
 

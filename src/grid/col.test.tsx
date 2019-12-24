@@ -34,6 +34,20 @@ test('Default col (auto)', () => {
   expect(output).toHaveStyleRule('flex', '0 0 auto')
 })
 
+test('Accepts string based column size values', () => {
+  const output = renderer
+    .create(
+      <Col size="20%">
+        <p>child</p>
+      </Col>
+    )
+    .toJSON()
+
+  expect(output).toMatchSnapshot()
+  expect(output).toHaveStyleRule('flex', '0 0 20%')
+  expect(output).toHaveStyleRule('max-width', '20%')
+})
+
 test('Breakpoint media', () => {
   const output = renderer
     .create(

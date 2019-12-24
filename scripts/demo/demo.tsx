@@ -15,7 +15,7 @@ function App() {
   return (
     <GridTheme>
       <Container size="md">
-        <Row colProps={{ mB: 24 }}>
+        <Row col_props={{ mB: 24 }}>
           <Col>
             <Box bg="#21618C">Box 1</Box>
           </Col>
@@ -27,7 +27,7 @@ function App() {
           </Col>
         </Row>
 
-        <Row colSize={1} colProps={{ mB: 24 }} colSizeMd={2} colSizeXl={4}>
+        <Row cols={1} cols_md={2} cols_xl={4} col_props={{ mB: 24 }}>
           <Col>
             <Box bg="#95A5A6">Box 1</Box>
           </Col>

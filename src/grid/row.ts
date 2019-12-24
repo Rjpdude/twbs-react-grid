@@ -3,23 +3,9 @@ import { CSSObject } from 'styled-components'
 import { configureElement } from '../element/element'
 import { GridElement } from '../element/interface'
 import { ThemeOptions } from '../theme/options'
-import { Col, BreakpointVal } from './col'
-
-export type RowColProps = Omit<GridElement<{}>, 'order'>
+import { Col } from './col'
 
 export interface RowProps {
-  colSize: BreakpointVal
-  colSizeSm: BreakpointVal
-  colSizeMd: BreakpointVal
-  colSizeLg: BreakpointVal
-  colSizeXl: BreakpointVal
-
-  colProps: RowColProps
-  colPropsSm: RowColProps
-  colPropsMd: RowColProps
-  colPropsLg: RowColProps
-  colPropsXl: RowColProps
-
   /**
    * When false, the row's margin along with the padding of child columns are disabled.
    *
@@ -27,20 +13,73 @@ export interface RowProps {
    * @default true
    */
   gutters: boolean
+  /**
+   * The number of columns (between 1 and 6) to render per row.
+   *
+   * @see https://getbootstrap.com/docs/4.4/layout/grid/#row-columns
+   */
+  cols: RowColsVal
+  /**
+   * The number of columns (between 1 and 6) to render per row at the `small` breakpoint.
+   *
+   * @see https://getbootstrap.com/docs/4.4/layout/grid/#row-columns
+   */
+  cols_sm: RowColsVal
+  /**
+   * The number of columns (between 1 and 6) to render per row at the `medium` breakpoint.
+   *
+   * @see https://getbootstrap.com/docs/4.4/layout/grid/#row-columns
+   */
+  cols_md: RowColsVal
+  /**
+   * The number of columns (between 1 and 6) to render per row at the `large` breakpoint.
+   *
+   * @see https://getbootstrap.com/docs/4.4/layout/grid/#row-columns
+   */
+  cols_lg: RowColsVal
+  /**
+   * The number of columns (between 1 and 6) to render per row at the `extra large` breakpoint.
+   *
+   * @see https://getbootstrap.com/docs/4.4/layout/grid/#row-columns
+   */
+  cols_xl: RowColsVal
+  /**
+   * The element properties to assign to child columns.
+   */
+  col_props: RowColProps
+  /**
+   * The element properties to assign to child columns at the `small` breakpoint.
+   */
+  col_props_sm: RowColProps
+  /**
+   * The element properties to assign to child columns at the `medium` breakpoint.
+   */
+  col_props_md: RowColProps
+  /**
+   * The element properties to assign to child columns at the `large` breakpoint.
+   */
+  col_props_lg: RowColProps
+  /**
+   * The element properties to assign to child columns at the `extra large` breakpoint.
+   */
+  col_props_xl: RowColProps
 }
 
+export type RowColsVal = 1 | 2 | 3 | 4 | 5 | 6
+export type RowColProps = Omit<GridElement<{}>, 'order'>
+
 export const rowPropKeys = [
-  'colSize',
-  'colSizeSm',
-  'colSizeMd',
-  'colSizeLg',
-  'colSizeXl',
-  'colProps',
-  'colPropsSm',
-  'colPropsMd',
-  'colPropsLg',
-  'colPropsXl',
-  'gutters'
+  'gutters',
+  'cols',
+  'cols_sm',
+  'cols_md',
+  'cols_lg',
+  'cols_xl',
+  'col_props',
+  'col_props_sm',
+  'col_props_md',
+  'col_props_lg',
+  'col_props_xl'
 ]
 
 export const Row = configureElement<RowProps>(
@@ -58,69 +97,60 @@ export const Row = configureElement<RowProps>(
 )
 
 export function rowChildMapper(child: ReactElement<any, any>, props: RowProps) {
-  if (!child.type?.styledComponent) {
-    return child
-  }
+  return !child.type?.styledComponent
+    ? child
+    : cloneElement(
+        child,
+        Object.keys(props).reduce(
+          (childProps, propKey) => {
+            return propKey.startsWith('cols')
+              ? assignColSize(propKey, props[propKey], childProps)
+              : propKey.startsWith('col_props')
+              ? assignColProp(propKey, props[propKey], childProps)
+              : childProps
+          },
+          { ...child.props }
+        )
+      )
+}
 
-  const colSizeProps = Object.keys(props).filter((propKey) =>
-    propKey.startsWith('colSize')
-  )
+export function assignColSize(key: string, val: number, columnProps: any) {
+  const propKey = key === 'cols' ? 'size' : key.substr(5)
+  const size = val === 5 ? '20%' : 12 / val
 
-  const toAssign = colSizeProps.reduce(
-    (childProps, propKey) => {
-      const colSizeVal =
-        props[propKey] === 'equal' || props[propKey] === 'auto'
-          ? props[propKey]
-          : 12 / props[propKey]
-
-      const colPropKey =
-        propKey === 'colSize' ? 'size' : propKey.substr(7).toLowerCase()
-
-      if (!childProps[colPropKey]) {
-        childProps[colPropKey] = colSizeVal
-      } else if (
-        typeof childProps[colPropKey] === 'object' &&
-        !childProps[colPropKey].size
-      ) {
-        childProps[colPropKey] = {
-          ...childProps[colPropKey],
-          size: colSizeVal
-        }
-      }
-
-      return childProps
-    },
-    { ...child.props }
-  )
-
-  const colProps = Object.keys(props).filter((propKey) =>
-    propKey.startsWith('colProps')
-  )
-
-  colProps.forEach((propKey) => {
-    const colProp = props[propKey]
-    const colPropKey = propKey.substr(8).toLowerCase()
-    const target = colPropKey === '' ? toAssign : toAssign[colPropKey]
-
-    if (!target) {
-      toAssign[colPropKey] = {
-        [propKey]: colProp
-      }
-    } else if (typeof target === 'object') {
-      Object.keys(colProp).forEach((elemKey) => {
-        if (!target[elemKey]) {
-          target[elemKey] = colProp[elemKey]
-        }
-      })
-    } else if (typeof target === 'string' || typeof target === 'number') {
-      toAssign[colPropKey] = {
-        ...colProp,
-        size: target
-      }
+  if (!columnProps[propKey]) {
+    columnProps[propKey] = size
+  } else if (
+    typeof columnProps[propKey] === 'object' &&
+    !columnProps[propKey].size
+  ) {
+    columnProps[propKey] = {
+      ...columnProps[propKey],
+      size
     }
-  })
+  }
+  return columnProps
+}
 
-  return cloneElement(child, toAssign)
+export function assignColProp(key: string, val: any, columnProps: any) {
+  const propKey = key !== 'col_props' && key.substr(10)
+  const target = !propKey ? columnProps : columnProps[propKey]
+
+  if (!target) {
+    columnProps[propKey] = val
+  } else if (typeof target === 'object') {
+    Object.keys(val).forEach((elemKey) => {
+      if (!target[elemKey]) {
+        target[elemKey] = val[elemKey]
+      }
+    })
+  } else if (typeof target === 'string' || typeof target === 'number') {
+    columnProps[propKey] = {
+      ...val,
+      size: target
+    }
+  }
+  return columnProps
 }
 
 function initialRowStyle(
