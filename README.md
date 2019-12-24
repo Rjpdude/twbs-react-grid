@@ -1,5 +1,7 @@
 # Bootstrap React Grid
 
+[![npm](https://img.shields.io/npm/v/twbs-react-grid.svg)](https://www.npmjs.com/package/twbs-react-grid) [![Minzipped size](https://img.shields.io/bundlephobia/minzip/twbs-react-grid.svg)](https://bundlephobia.com/result?p=twbs-react-grid) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 A full implementation of the standalone [Bootstrap Flexbox Grid](https://getbootstrap.com/docs/4.4/layout/overview/) for [React](https://github.com/facebook/react) using [Styled Components](https://github.com/styled-components/styled-components).
 
 ```tsx
