@@ -92,7 +92,7 @@ function Page() {
 
 The `Row` component wraps columns, and can optionally control the sizing of it's column children by declaring how many columns to render per row on each breakpoint through the `cols_*` prop. See the reference above for more information on how this works.
 
-Taking it a step further, row's can also automatically apply [Element Properties](#element-properties) to column child on each breakpoint through the `col_props_*` property (this is useful, for example, to set a bottom margin on each child column).
+Taking it a step further, row's can also automatically apply [Element Properties](#element-properties) to it's column children on each breakpoint through the `col_props_*` property (this is useful, for example, to set a bottom margin on each child column).
 
 ```tsx
 import { Row } from 'twbs-react-grid';
@@ -110,7 +110,7 @@ function Elem() {
 
 **Reference:** [Bootstrap 4.4 - Grid Options](https://getbootstrap.com/docs/4.4/layout/grid/#grid-options)
 
-The `Col` element is meat of grid layout. A column can declare it's size on each breakpoint (1 through 12, equal or auto). Columns will assume an equal size by default. For more information on how column sizing works, see the reference above. The `size` property is the extra small / default size of the column.
+The `Col` element is the meat of the grid layout. A column can declare it's size on each breakpoint (1 through 12, equal or auto). Columns will assume an equal size by default. For more information on how column sizing works, see the reference above. The `size` property is the extra small / default size of the column.
 
 The breakpoint values for column elements can also be an object describing the [Element Properties](#element-properties) at the given breakpoint and/or the actual breakpoint size.
 
