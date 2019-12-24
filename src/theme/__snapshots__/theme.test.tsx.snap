@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Context obj Exports context obj 1`] = `
+Object {
+  "$$typeof": Symbol(react.context),
+  "Consumer": Object {
+    "$$typeof": Symbol(react.context),
+    "_calculateChangedBits": null,
+    "_context": [Circular],
+  },
+  "Provider": Object {
+    "$$typeof": Symbol(react.provider),
+    "_context": [Circular],
+  },
+  "_calculateChangedBits": null,
+  "_currentRenderer": null,
+  "_currentRenderer2": null,
+  "_currentValue": Object {
+    "lg": 992,
+    "lgWidth": 960,
+    "md": 768,
+    "mdWidth": 720,
+    "sm": 576,
+    "smWidth": 540,
+    "spacing": 15,
+    "themeStyle": true,
+    "xl": 1200,
+    "xlWidth": 1140,
+  },
+  "_currentValue2": Object {
+    "lg": 992,
+    "lgWidth": 960,
+    "md": 768,
+    "mdWidth": 720,
+    "sm": 576,
+    "smWidth": 540,
+    "spacing": 15,
+    "themeStyle": true,
+    "xl": 1200,
+    "xlWidth": 1140,
+  },
+  "_threadCount": 0,
+}
+`;
+
+exports[`getMergedTheme Merges supplied theme options 1`] = `
+Object {
+  "lg": 992,
+  "lgWidth": 960,
+  "md": 768,
+  "mdWidth": 720,
+  "sm": 576,
+  "smWidth": 540,
+  "spacing": 18,
+  "themeStyle": true,
+  "xl": 1200,
+  "xlWidth": 1200,
+}
+`;

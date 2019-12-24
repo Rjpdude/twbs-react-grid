@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Default theme function 1`] = `
+Object {
+  "lg": 992,
+  "lgWidth": 960,
+  "md": 768,
+  "mdWidth": 720,
+  "sm": 576,
+  "smWidth": 540,
+  "spacing": 15,
+  "themeStyle": true,
+  "xl": 1200,
+  "xlWidth": 1140,
+}
+`;

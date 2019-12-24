@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Style mapping 1`] = `
+Object {
+  "alignContent": Object {
+    "alignContent": "center",
+  },
+  "alignItems": Object {
+    "alignItems": "baseline",
+  },
+  "alignSelf": Object {
+    "alignSelf": "flex-start",
+  },
+  "direction": Object {
+    "flexDirection": "column-reverse",
+  },
+  "display": Object {
+    "display": "inline-block",
+  },
+  "fill": Object {
+    "flex": "1 1 auto",
+  },
+  "grow": Object {
+    "flexGrow": 0,
+  },
+  "justifyContent": Object {
+    "justifyContent": "space-between",
+  },
+  "offset": Object {
+    "order": 13,
+  },
+  "order": Object {
+    "order": -1,
+  },
+  "shrink": Object {
+    "flexShrink": 1,
+  },
+  "wrap": Object {
+    "flexWrap": "wrap-reverse",
+  },
+}
+`;

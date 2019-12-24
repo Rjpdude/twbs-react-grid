@@ -1,181 +1,164 @@
 # Bootstrap React Grid
 
-A full implementation of the standalone Bootstrap 4 flexbox grid system for React, written in TypeScript and built down to ES5 for any web project.
+A full implementation of the standalone [Bootstrap Flexbox Grid](https://getbootstrap.com/docs/4.4/layout/overview/) for [React](https://github.com/facebook/react) using [Styled Components](https://github.com/styled-components/styled-components).
 
-* Access the standalone [Bootstrap 4](https://github.com/twbs/bootstrap) flexbox grid system expressed as React.js stateless components
-* Implement all of the flexbox properties on any grid element *(including column breakpoints)*
-* Flexbox property declarations for seamless component expressions
-* Super lightweight! No additional build dependencies other than React, and set to build in ES5 JS
+```tsx
+import { Container, Row, Col } from 'twbs-react-grid';
 
-# Getting Started
+function Page() {
+  return (
+    <Container>
+      <Row>
+        <Col size={3} lg={4}>
+          <SideNav />
+        </Col>
 
-To install the package, run the following command within your project's root directory:
-
-```
-npm i --save twbs-react-grid
-```
-
-Then, import any of the elements directly from anywhere in your project:
-
-```js
-import { 
-  Container, 
-  Row, 
-  Col, 
-  Flex, 
-  Display
-} from 'twbs-react-grid'
+        <Col size={9} lg={8}>
+          <PageBody />
+        </Col>
+      </Row>
+    </Container>
+  )
+}
 ```
 
-# Grid Elements
+## Getting Started
 
-This package provides three grid elements - `Container`, `Row`, and `Col`. While all of them have access to the properties outlined below (see [Grid Element Properties](#grid-element-properties)), each of them have their own individual properties.
+This package offers all of the main grid layout elements supplied by Bootstrap (**container**, **row** and **column**) along with a higher ordered **theme** component for overriding the Bootstrap layout defaults.
+
+### Table of Contents
+
+* [Installation](#installation)
+* [Grid Theme](#grid-theme)
+* [Container](#container)
+* [Row](#row)
+* [Column](#column)
+* [Element Properties](#element-properties)
+* [Demo](#demo)
+
+## Installation
+
+To get started, install the `twbs-react-grid` and `styled-components` packages on your React project using your preferred package manager.
+
+```
+npm install --save styled-components twbs-react-grid
+```
+
+## Grid Theme
+
+The `GridTheme` component allows you to override the default Bootstrap layout sizing options (such as breakpoint widths / container sizes). It also (optionally) applies the global page styling.
+
+The grid theme uses the [React Context API](https://reactjs.org/docs/context.html), and must wrap your application at the top level.
+
+```tsx
+import { GridTheme } from 'twbs-react-grid';
+
+function App() {
+  return (
+    <GridTheme spacing={12} xlWidth={1260}>
+      ...
+    </GridTheme>
+  )
+}
+```
+
+| Property | Details | Default Value |
+| :------- |:--------| :-------------|
+|themeStyle|When true, the default Bootstrap `html` styling will be applied to the webpage.|`true`
+|spacing|The value in pixels to use for the layout margin and padding. Also referred to as `gutters` by Bootstrap.|`15`
+|sm<br>md<br>lg<br>xl|The minimum widths for each breakpoint. For example, by default, the `sm` breakpoint will activate when the screen hits `576px`. You can supply any numeric value to override these defaults.|See [Grid Options](https://getbootstrap.com/docs/4.4/layout/grid/#grid-options)
+|smWidth<br>mdWidth<br>lgWidth<br>xlWidth|The maximum widths for each breakpoint container. For example, the `md` breakpoint will have a container with a maximum width of `720px` by default. You can supply any numeric value to override these defaults.|See [Grid Options](https://getbootstrap.com/docs/4.4/layout/grid/#grid-options)
 
 ## Container
 
-```js
-import { Container } from 'twbs-react-grid'
-```
+**Reference:** [Bootstrap 4.4 - Containers](https://getbootstrap.com/docs/4.4/layout/overview/#containers)
 
-| Property | Details | Possible Values | Default Value |
-| :------- |:--------| :---------------| :-------------|
-|fluid|Controls whether the container should assume a fluid width *(100% across viewports)* or a responsive pixel width.|`boolean`|`false`
+The `Container` component accepts the `size` property - which can be either `fluid`, `sm`, `md`, `lg` or `xl`. This property controls the fluidity of the container. See the reference above for more information. Containers conform to the layout spacing and sizing supplied through the [Grid Theme](#grid-theme).
+
+```tsx
+import { Container } from 'twbs-react-grid';
+
+function Page() {
+  return (
+    <Container size="md">
+      ...
+    </Container>
+  )
+}
+```
 
 ## Row
 
-```js
-import { Row } from 'twbs-react-grid'
-```
+**Reference:** [Bootstrap 4.4 - Row Columns](https://getbootstrap.com/docs/4.4/layout/grid/#row-columns)
 
-| Property | Details | Possible Values | Default Value |
-| :------- |:--------| :---------------| :-------------|
-|noGutters|When true, it disables the margin of the row and the padding of it's columns.|`boolean`|`false`
+The `Row` component wraps columns, and can optionally control the sizing of it's column children by declaring how many columns to render per row on each breakpoint through the `cols_*` prop. See the reference above for more information on how this works.
 
-## Col
+Taking it a step further, row's can also automatically apply [Element Properties](#element-properties) to it's column children on each breakpoint through the `col_props_*` property (this is useful, for example, to set a bottom margin on each child column).
 
-```js
-import { Col } from 'twbs-react-grid'
-```
+```tsx
+import { Row } from 'twbs-react-grid';
 
-| Property | Details | Possible Values |
-| :------- | :------ | --------------: |
-|size|The `xs` breakpoint and default size of the column. Defaults to `"equal"`.|`1` to `12`<br>`"equal"`<br>`"auto"`
-|sm<br>md<br>lg<br>xl| Each breakpoint can either be a number/string representing it's size, or an object of Grid Element Properties.  |`1` to `12`<br>`"equal"`<br>`"auto"`<br>`{}` of [Grid Element Properties](#grid-element-properties)
-
-# Example
-```js
-import React from 'react'
-
-import { 
-  Container, 
-  Row, 
-  Col, 
-  Flex,
-  Display 
-} from 'twbs-react-grid'
-
-const SimpleGrid = () => (
-  <Container>
-    // Auto Columns
-    <Row>
-      <Col>1/3</Col>
-      <Col>1/3</Col>
-      <Col>1/3</Col>
-    </Row> 
-    
-    // Half Columns
-    <Row>
-      <Col size={6}>1/2</Col>
-      <Col size={6}>1/2</Col>
+function Elem() {
+  return (
+    <Row cols={2} cols_lg={4} col_props={{ mB: 20 }}>
+      ...
     </Row>
-
-    // Wrapped Columns
-    <Row>
-      <Col size={3}>1/4</Col>
-      <Col>2/4</Col>
-      <Col size={3}>1/4</Col>
-    </Row>
-
-    // Responsive Columns
-    <Row>
-      <Col size={12} md={6} xl={4} />
-      <Col size={12} md={6} xl={4} />
-      <Col size={12} md={6} xl={4} />
-      <Col size={12} md={6} xl={4} />
-    </Row>
-  </Container>
-)
-
-const AdvancedGrid = () => (
-  <Container>
-    <Row alignItems={Flex.AlignItems.Center} classNames="advanced columns">
-      <Col 
-        size={12} 
-        direction={Flex.Direction.Row}
-        sm={{ size: 6, order: "last" }} 
-        md={{ size: "auto", justifyContent: Flex.JustifyContent.End }}
-        xl={{ display: Display.None }}
-      />
-      <Col 
-        size={12} 
-        direction={Flex.Direction.Column}
-        sm={{ size: 6, order: "first" }} 
-        md={{ size: "auto", reverse: true, alignItems: Flex.AlignItems.Center }}
-      />
-    </Row>
-  </Container>
-)
+  )
+}
 ```
 
-# Grid Element Properties
+## Column
 
-All of the grid elements (`Container`, `Row`, `Col`) and column breakpoints (`sm`, `md`, `lg`, `xl`) have access to any of the following properties:
+**Reference:** [Bootstrap 4.4 - Grid Options](https://getbootstrap.com/docs/4.4/layout/grid/#grid-options)
 
-## Flex Properties
+The `Col` element is the meat of the grid layout. A column can declare it's size on each breakpoint (1 through 12, equal or auto). Columns will assume an equal size by default. For more information on how column sizing works, see the reference above. The `size` property is the extra small / default size of the column.
 
-```js
-import { Flex } from 'twbs-react-grid'
+The breakpoint values for column elements can also be an object describing the [Element Properties](#element-properties) at the given breakpoint and/or the actual breakpoint size.
+
+```tsx
+import { Col } from 'twbs-react-grid';
+
+function Elem() {
+  return (
+    <Col size={12} md={6} xl={{ size: 4, p: 16 }}>
+      ...
+    </Col>
+  )
+}
 ```
 
-| Property | Possible Values | Example Usage |
-| ------------- |:-------------| -----:|
-|direction|`Flex.Direction.Row`<br>`Flex.Direction.Column`|`direction={Flex.Direction.Row}`|
-|wrap|`Flex.Wrap.Wrap`<br>`Flex.Wrap.NoWrap`<br>`Flex.Wrap.Reverse`|`wrap={Flex.Wrap.Reverse}`|
-|justifyContent|`Flex.JustifyContent.Start`<br>`Flex.JustifyContent.End`<br>`Flex.JustifyContent.Center`<br>`Flex.JustifyContent.Between`<br>`Flex.JustifyContent.Around`<br>|`justifyContent={Flex.JustifyContent.Center}`|
-|alignItems|`Flex.AlignItems.Start`<br>`Flex.AlignItems.End`<br>`Flex.AlignItems.Center`<br>`Flex.AlignItems.Baseline`<br>`Flex.AlignItems.Stretch`|`alignItems={Flex.AlignItems.End}`|
-|alignContent|`Flex.AlignContent.Start`<br>`Flex.AlignContent.End`<br>`Flex.AlignContent.Center`<br>`Flex.AlignContent.Between`<br>`Flex.AlignContent.Around`<br>`Flex.AlignContent.Stretch`<br>|`alignContent={Flex.AlignContent.Between}`|
-|alignSelf|`Flex.AlignSelf.Auto`<br>`Flex.AlignSelf.Start`<br>`Flex.AlignSelf.End`<br>`Flex.AlignSelf.Center`<br>`Flex.AlignSelf.Baseline`<br>`Flex.AlignSelf.Stretch`|`alignSelf={Flex.AlignSelf.Start}`|
-|order|`0` -  `12`<br>`"first"`<br>`"last"`|`order={2}`<br>`order="last"`|
-|offset|`1` - `11`|`offset={5}`|
-|reverse|`boolean`|`reverse={true}`|
-|fill|`boolean`|`fill={true}`|
-|grow|`0` or `1`|`grow={0}`|
-|shrink|`0` or `1`|`shrink={1}`|
+## Element Properties
 
-## Display Properties
+**Reference:** [Bootstrap 4.4 - Layout Utilities](https://getbootstrap.com/docs/4.4/layout/utilities-for-layout/)
 
-```js
-import { Display } from 'twbs-react-grid'
+Each of the `Container`, `Row` and `Col` elements can be assigned layout properties to easily control their display, alignment and spacing.
+
+For more fine grained control, [Column](#column) elements can also set their properties on each breakpoint. For example, a column can be hidden by default, and be displayed on the medium breakpoint and up. As described above in the [Row](#row) section, column properties can also be applied at the row level for ease of application.
+
+| Property | Details | Values |
+| :------- |:--------| :-------------|
+|display|Controls the element's CSS **display** property.|`none`, `inline`, `block`, `inline-block`, `table`, `table-row`, `table-cell`, `flex`, `inline-flex`
+|direction|Controls the element's CSS **flex-direction** property.|`row`, `row-reverse`, `column`, `column-reverse`
+|justifyContent|Controls the element's CSS **justify-content** property.|`start`, `end`, `center`, `between`, `around`, `evenly`
+|alignContent|Controls the element's CSS **align-content** property.|`start`, `end`, `center`, `between`, `around`, `stretch`
+|alignItems|Controls the element's CSS **align-items** property.|`start`, `end`, `center`, `baseline`, `stretch`
+|alignSelf|Controls the element's CSS **align-self** property.|`start`, `end`, `center`, `auto`, `baseline`, `stretch`
+|wrap|Controls the element's CSS **flex-wrap** property.|`true`, `false`, `reverse`
+|grow<br>shrink|Controls the element's CSS **grow** and **shrink** properties.|`0`, `1`
+|fill|When true, sets the element's CSS **flex** property to `1 1 auto`.|`true`, `false`
+|order|Controls the element's CSS **order** property. This property is ideally used to dynamically re-order columns. See [Reordering](https://getbootstrap.com/docs/4.4/layout/grid/#reordering) for more info.|`first`, `last`, `0-12`
+|offset|This property is used to dynamically offset columns. See [Offsetting Columns](https://getbootstrap.com/docs/4.4/layout/grid/#offsetting-columns) for more info.|`1-11`
+|m *and* p<br>mX *and* pX<br>mY *and* pY<br>mT *and* pT<br>mB *and* pB<br>mL *and* pL<br>mR *and* pR|Spacing properties are used to control the element's margin and padding. Spacing values can either be numeric (in pixels) or string values (such as `auto` or `2em`).|-
+
+## Demo
+
+This repo is configured to run a local demo through a basic `webpack-dev-server` configuration on port 7200. To run the demo locally, simply run the following commands:
+
+```
+git clone https://github.com/Rjpdude/twbs-react-grid.git
+cd twbs-react-grid
+npm install
+npm run demo
 ```
 
-| Property | Possible Values | Example Usage |
-|:---------|:----------------| -------------:|
-|display|`Display.None`<br>`Display.Inline`<br>`Display.InlineBlock`<br>`Display.Block`<br>`Display.Table`<br>`Display.TableRow`<br>`Display.TableCell`|`display={Display.None}`
-
-## Margin & Padding Properties
-
-The margin and padding properties are provided as shorthand identifiers. For example, the property `mB` stands for `marginBottom`. The `Y` and `X` properties represent the element's axis. For example, `pY` will effect the top and bottom padding.
-
-| Properties | Possible Values | Example Usages |
-|:---------|:----------------| -------------:|
-|m<br>mT<br>mB<br>mY<br>mL<br>mR<br>mX|`-5` through `5`<br>`"auto"`|`mT={5}`<br>`mB={2}`<br>`mX="auto"`|
-|p<br>pT<br>pB<br>pY<br>pL<br>pR<br>pX|`0` through `5`|`p="auto"`<br>`pY={3}`<br>`pB={1}`
-
-## Misc. Properties
-
-
-| Property | Possible Values | Example Usages |
-|:---------|:----------------| --------------:|
-|classNames *|`string`<br>`string[]`|`classNames="tick tock"`<br>`classNames={['tick', 'tock']}`
-
-**- The `classNames` property is not available on column breakpoints, but it is available on the column itself.*
+The demo application is configured to run through the `scripts/demo/demo.tsx` file.

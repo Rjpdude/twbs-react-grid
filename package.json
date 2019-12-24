@@ -1,15 +1,12 @@
 {
   "name": "twbs-react-grid",
-  "version": "1.2.5",
-  "version_short": "1.2",
-  "description": "Twitter Bootstrap 4 Standalone Flexbox Grid System for React",
+  "version": "2.0.0",
+  "version_short": "2.0",
+  "description": "Bootstrap 4 Standalone Flexbox Grid for React, using Styled Components",
   "keywords": [
-    "react-bootstrap-grid",
     "react",
-    "component",
-    "components",
-    "react-component",
-    "bootstrap",
+    "boostrap",
+    "grid",
     "flexbox",
     "responsive",
     "front-end",
@@ -19,8 +16,9 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "demo": "webpack-dev-server --config scripts/webpack.config.js",
     "build": "tsc",
-    "test": "jest --config jestconfig.json",
+    "test": "jest --config ./config/jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
@@ -47,17 +45,29 @@
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.11",
     "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-test-renderer": "^16.9.1",
+    "@types/styled-components": "^4.4.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
-    "jest": "^24.5.0",
-    "prettier": "^1.16.4",
-    "react-dom": "^16.8.4",
+    "jest": "^24.9.0",
+    "jest-styled-components": "^6.3.4",
+    "prettier": "^1.19.1",
+    "react": "^16.8.4",
+    "react-dom": "^16.12.0",
+    "react-test-renderer": "^16.12.0",
+    "styled-components": "^4.4.1",
     "ts-jest": "^24.0.0",
+    "ts-loader": "^6.2.1",
     "tslint": "^5.14.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   },
-  "dependencies": {
-    "react": "^16.8.4"
+  "peerDependencies": {
+    "react": "^16.8.4",
+    "styled-components": "^4.0.0"
   }
 }

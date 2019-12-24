@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Global theme style 1`] = `
+Array [
+  "
+  html {
+    box-sizing: border-box;
+    -ms-overflow-style: scrollbar;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+",
+]
+`;
