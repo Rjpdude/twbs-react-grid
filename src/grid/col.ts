@@ -50,25 +50,26 @@ export type BreakpointSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 export type BreakpointVal = 'equal' | 'auto' | string | BreakpointSize
 export type BreakpointPropVal = BreakpointVal | GridElement<GridColumn>
 
-export const Col = configureElement<ColumnProps>(
-  ({ ownProps, themeProps }) => {
-    if (!ownProps.size) {
-      ownProps.size = 'equal'
-    }
+export const colPropKeys = ['size', 'sm', 'md', 'lg', 'xl']
 
-    return Object.keys(ownProps).reduce(
-      (style, breakpointId) =>
-        assignBreakpointStyle(
-          ownProps,
-          themeProps,
-          breakpointId as keyof ColumnProps,
-          style
-        ),
-      initialColStyle(themeProps)
-    )
-  },
-  ['size', 'sm', 'md', 'lg', 'xl']
-)
+export const Col = configureElement<ColumnProps>(({ ownProps, themeProps }) => {
+  if (!ownProps.size) {
+    ownProps.size = 'equal'
+  }
+
+  return colPropKeys.reduce(
+    (style, breakpointId) =>
+      !ownProps[breakpointId]
+        ? style
+        : assignBreakpointStyle(
+            ownProps,
+            themeProps,
+            breakpointId as keyof ColumnProps,
+            style
+          ),
+    initialColStyle(themeProps)
+  )
+}, colPropKeys)
 
 export function assignBreakpointStyle(
   props: Partial<ColumnProps>,
