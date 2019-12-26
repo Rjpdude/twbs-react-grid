@@ -97,7 +97,7 @@ export const Row = configureElement<RowProps>(
 )
 
 export function rowChildMapper(child: ReactElement<any, any>, props: RowProps) {
-  return !child.type?.styledComponent
+  return !child?.type?.styledComponent
     ? child
     : cloneElement(
         child,
