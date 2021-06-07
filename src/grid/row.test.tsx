@@ -21,7 +21,9 @@ test('No gutters', () => {
   const output = renderer
     .create(
       <Row gutters={false}>
-        <p>child</p>
+        <Col>
+          <p>child</p>
+        </Col>
       </Row>
     )
     .toJSON()
