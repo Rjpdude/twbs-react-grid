@@ -5,5 +5,5 @@ test('Global theme style', () => {
 })
 
 test('Global theme style component', () => {
-  expect(Style.GridThemeStyle).toEqual(expect.any(Function))
+  expect(Style.GridThemeStyle).toEqual(expect.any(Object))
 })

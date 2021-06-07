@@ -7,7 +7,7 @@ export interface ContainerProps {
 }
 
 export const Container = configureElement<ContainerProps>(
-  ({ ownProps, themeProps }) => {
+  'twbs-grid-container', ({ ownProps, themeProps }) => {
     const containerStyle = initialContainerStyle(themeProps)
     const size = ownProps.size
 

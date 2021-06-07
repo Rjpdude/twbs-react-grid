@@ -13,7 +13,7 @@ exports[`Accepts string based column size values 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-col"
 >
   <p>
     child
@@ -54,7 +54,7 @@ exports[`Applies element style properties on breakpoints 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-col"
 >
   <p>
     child
@@ -90,7 +90,7 @@ exports[`Applies element style properties on root column 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-col"
 >
   <p>
     child
@@ -147,7 +147,7 @@ exports[`Applies padding and breakpoints from context 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-col"
 >
   <p>
     child
@@ -204,7 +204,7 @@ exports[`Breakpoint media 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-col"
 >
   <p>
     child
@@ -265,7 +265,7 @@ exports[`Breakpoint media sizing from nested element obj 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-col"
 >
   <p>
     child
@@ -286,7 +286,7 @@ exports[`Default col (auto) 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-col"
 >
   <p>
     child
@@ -311,7 +311,7 @@ exports[`Default col (equal) 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-col"
 >
   <p>
     child

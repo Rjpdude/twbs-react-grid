@@ -1,4 +1,5 @@
 import React from 'react'
+import styled, { css } from 'styled-components'
 import renderer from 'react-test-renderer'
 import 'jest-styled-components'
 import { mount } from 'enzyme'
@@ -8,15 +9,15 @@ test('Configure element function', () => {
   expect(configureElement).toEqual(expect.any(Function))
 })
 
-test('Supplies component w/ attached styled component ref', () => {
-  const Element = configureElement(() => ({}), [])
+test('Supplies component w/ attached styled component ref and class name', () => {
+  const Element = configureElement('demo-class-name', () => ({}), [])
 
-  expect(Element).toEqual(expect.any(Function))
+  expect(Element.attrs).toEqual([ { className: 'demo-class-name' } ])
   expect(Element.styledComponent).toEqual(expect.any(Object))
 })
 
 test('Renders children', () => {
-  const Element = configureElement(() => ({}), [])
+  const Element = configureElement('demo-class-name', () => ({}), [])
 
   const output = mount(
     <Element>
@@ -29,7 +30,7 @@ test('Renders children', () => {
 
 test('Attaches style and pass through dom attrs', () => {
   const Element = configureElement<{ val: number }>(
-    (props) => ({
+    'demo-class-name', (props) => ({
       margin: `${props.ownProps.val}px`
     }),
     ['val']
@@ -44,7 +45,7 @@ test('Attaches style and pass through dom attrs', () => {
 })
 
 test('Attaches element style properties', () => {
-  const Element = configureElement(() => ({}), [])
+  const Element = configureElement('demo-class-name', () => ({}), [])
 
   const output = renderer
     .create(
@@ -61,4 +62,42 @@ test('Attaches element style properties', () => {
   expect(output).toHaveStyleRule('flex-direction', 'column')
   expect(output).toHaveStyleRule('align-content', 'space-between')
   expect(output).toHaveStyleRule('margin', '16px')
+})
+
+test('Attaches override style properties', () => {
+  const Element = configureElement('demo-class-name', () => ({}), [])
+  const OverrideElement = styled(Element)`
+    background-color: #fff;
+  `
+
+  const output = renderer
+    .create(
+      <OverrideElement display="inline-block" />
+    )
+    .toJSON()
+
+  expect(output).toHaveStyleRule('display', 'inline-block')
+  expect(output).toHaveStyleRule('background-color', '#fff')
+})
+
+test('Attaches override style properties through parent', () => {
+  const Element = configureElement('demo-class-name', () => ({}), [])
+  const Parent = styled.div`
+    ${Element} {
+      background-color: #fff;
+    }
+  `
+
+  const output = renderer
+    .create(
+      <Parent>
+        <Element />
+      </Parent>
+    )
+    .toJSON()
+
+  expect(output).toHaveStyleRule('background-color', '#fff', {
+    // @ts-ignore
+    modifier: css`${Element}`,
+  })
 })

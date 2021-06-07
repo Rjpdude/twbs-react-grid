@@ -6,13 +6,13 @@ test('Exports theme component and context', () => {
 })
 
 test('Exports container element', () => {
-  expect(Root.Container).toEqual(expect.any(Function))
+  expect(Root.Container.attrs).toEqual([{"className": "twbs-grid-container"}])
 })
 
 test('Exports row element', () => {
-  expect(Root.Row).toEqual(expect.any(Function))
+  expect(Root.Row.attrs).toEqual([{"className": "twbs-grid-row"}])
 })
 
 test('Exports column element', () => {
-  expect(Root.Col).toEqual(expect.any(Function))
+  expect(Root.Col.attrs).toEqual([{"className": "twbs-grid-col"}])
 })

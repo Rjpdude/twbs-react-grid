@@ -36,6 +36,7 @@ This package offers all of the main grid layout elements supplied by Bootstrap (
 * [Row](#row)
 * [Column](#column)
 * [Element Properties](#element-properties)
+* [Style Override](#style-override)
 * [Demo](#demo)
 
 ## Installation
@@ -151,6 +152,25 @@ For more fine grained control, [Column](#column) elements can also set their pro
 |order|Controls the element's CSS **order** property. This property is ideally used to dynamically re-order columns. See [Reordering](https://getbootstrap.com/docs/4.4/layout/grid/#reordering) for more info.|`first`, `last`, `0-12`
 |offset|This property is used to dynamically offset columns. See [Offsetting Columns](https://getbootstrap.com/docs/4.4/layout/grid/#offsetting-columns) for more info.|`1-11`
 |m *and* p<br>mX *and* pX<br>mY *and* pY<br>mT *and* pT<br>mB *and* pB<br>mL *and* pL<br>mR *and* pR|Spacing properties are used to control the element's margin and padding. Spacing values can either be numeric (in pixels) or string values (such as `auto` or `2em`).|-
+
+## Style Override
+
+You can override the style of any of the `Container`, `Row` and `Col` elements in the same way you'd override the style of any other styled component. Styles can be overriden through a parent styled-component or wrapped directly.
+
+```tsx
+import styled from 'styled-components';
+import { Row } from 'twbs-react-grid';
+
+const Parent = styled.div`
+  ${Row} {
+    margin-bottom: 24px;
+  }
+`
+
+const CustomRow = styled(Row)`
+  margin-bottom: 24px;
+`
+```
 
 ## Demo
 
