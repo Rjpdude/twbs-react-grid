@@ -1,15 +1,10 @@
-import { ReactNode, FunctionComponent, HTMLAttributes } from 'react'
+import { ReactNode, HTMLAttributes } from 'react'
 import { StyledComponent, CSSObject } from 'styled-components'
 import { ThemeOptions } from '../theme/options'
 import * as StyleMap from './style'
 
 export type GridElement<T> = Partial<T & GridElementProperties>
-
-export type GridElementComponent<T> = FunctionComponent<
-  GridElement<T> & HTMLAttributes<HTMLDivElement>
-> & {
-  styledComponent: StyledComponent<'div', any>
-}
+export type GridElementComponent<T> = StyledComponent<'div', any, GridElement<T>>
 
 export interface GridElementContext<T> extends HTMLAttributes<HTMLDivElement> {
   themeProps: ThemeOptions

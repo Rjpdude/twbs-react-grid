@@ -13,6 +13,7 @@ import {
 const elementPropertyKeys = Object.keys(gridPropertyStyleMap)
 
 export function configureElement<T>(
+  elementClassName: string,
   styleGenerator: GridElementStyleGenerator<T>,
   propertyKeys: string[],
   childMap?: GridElementChildMapper<T>
@@ -51,7 +52,7 @@ export function configureElement<T>(
   }
 
   component.styledComponent = styledElement
-  return component
+  return styled(component).attrs({ className: elementClassName })`` as any
 }
 
 function generateStyledElement<T>(

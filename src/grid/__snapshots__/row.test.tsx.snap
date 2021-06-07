@@ -25,7 +25,7 @@ exports[`Applies element style properties 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-row"
 >
   <p>
     child
@@ -47,7 +47,7 @@ exports[`Default row 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-row"
 >
   <p>
     child
@@ -89,10 +89,10 @@ exports[`No gutters 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-row"
 >
   <div
-    className="c1 c2"
+    className="c1 c2 twbs-grid-col"
   >
     <p>
       child

@@ -45,7 +45,7 @@ exports[`Applies element style properties 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-container"
 >
   <p>
     child
@@ -87,7 +87,7 @@ exports[`Default container 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-container"
 >
   <p>
     child
@@ -105,7 +105,7 @@ exports[`Fluid container 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 twbs-grid-container"
 >
   <p>
     child
