@@ -343,27 +343,8 @@ exports[`Enzyme snapshot 1`] = `
   >
     <styled.div
       className="custom-class-name twbs-grid-col"
-      elementProps={Object {}}
+      gridElementContext={[Function]}
       id="custom-id"
-      ownProps={
-        Object {
-          "size": 12,
-        }
-      }
-      themeProps={
-        Object {
-          "lg": 992,
-          "lgWidth": 960,
-          "md": 768,
-          "mdWidth": 720,
-          "sm": 576,
-          "smWidth": 540,
-          "spacing": 15,
-          "themeStyle": true,
-          "xl": 1200,
-          "xlWidth": 1140,
-        }
-      }
     >
       <div
         className="c0 custom-class-name twbs-grid-col"
