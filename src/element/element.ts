@@ -13,14 +13,15 @@ import {
 const elementPropertyKeys = Object.keys(gridPropertyStyleMap)
 
 export function configureElement<T>(
-  elementClassName: string,
+  elementType: string,
   styleGenerator: GridElementStyleGenerator<T>,
   propertyKeys: string[],
   childMap?: GridElementChildMapper<T>
 ): GridElementComponent<T> {
+  const elementClassName = `twbs-grid-${elementType.toLowerCase()}`
   const styledElement = generateStyledElement(styleGenerator)
 
-  const component = (props) => {
+  const component = (props: any) => {
     const styledElementProps = {
       themeProps: useContext(gridThemeContext),
       elementProps: {},
@@ -51,7 +52,9 @@ export function configureElement<T>(
     )
   }
 
+  component.displayName = elementType
   component.styledComponent = styledElement
+  
   return styled(component).attrs({ className: elementClassName })`` as any
 }
 

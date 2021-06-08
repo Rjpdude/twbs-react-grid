@@ -50,6 +50,7 @@
     "@types/styled-components": "^5.1.9",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.6.2",
     "jest": "^24.9.0",
     "jest-styled-components": "^7.0.4",
     "prettier": "^1.19.1",

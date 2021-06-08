@@ -52,7 +52,7 @@ export type BreakpointPropVal = BreakpointVal | GridElement<GridColumn>
 
 export const colPropKeys = ['size', 'sm', 'md', 'lg', 'xl']
 
-export const Col = configureElement<ColumnProps>('twbs-grid-col', ({ ownProps, themeProps }) => {
+export const Col = configureElement<ColumnProps>('Col', ({ ownProps, themeProps }) => {
   if (!ownProps.size) {
     ownProps.size = 'equal'
   }
