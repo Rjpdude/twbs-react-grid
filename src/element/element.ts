@@ -13,15 +13,18 @@ import {
 const elementPropertyKeys = Object.keys(gridPropertyStyleMap)
 
 export function configureElement<T>(
-  elementClassName: string,
+  elementType: string,
   styleGenerator: GridElementStyleGenerator<T>,
   propertyKeys: string[],
   childMap?: GridElementChildMapper<T>
 ): GridElementComponent<T> {
+  const elementClassName = `twbs-grid-${elementType.toLowerCase()}`
   const styledElement = generateStyledElement(styleGenerator)
 
-  const component = (props) => {
-    const styledElementProps = {
+  const component = (props: any) => {
+    const passThrouhProps = {}
+
+    const gridElementContext = {
       themeProps: useContext(gridThemeContext),
       elementProps: {},
       ownProps: {}
@@ -29,16 +32,21 @@ export function configureElement<T>(
 
     Object.keys(props).forEach((key) => {
       if (propertyKeys.includes(key)) {
-        styledElementProps.ownProps[key] = props[key]
+        gridElementContext.ownProps[key] = props[key]
       } else if (
         elementPropertyKeys.includes(key) ||
         isElementSpacingProp(key)
       ) {
-        styledElementProps.elementProps[key] = props[key]
-      } else if (key !== 'children') {
-        styledElementProps[key] = props[key]
+        gridElementContext.elementProps[key] = props[key]
+      } else {
+        passThrouhProps[key] = props[key]
       }
     })
+
+    const styledElementProps: any = {
+      ...passThrouhProps,
+      gridElementContext: () => gridElementContext
+    }
 
     return createElement(
       styledElement,
@@ -46,21 +54,24 @@ export function configureElement<T>(
       !childMap
         ? props.children
         : Children.map(props.children, (child) =>
-            childMap(child, styledElementProps.ownProps as T)
+            childMap(child, gridElementContext.ownProps as T)
           )
     )
   }
 
+  component.displayName = elementType
   component.styledComponent = styledElement
+  
   return styled(component).attrs({ className: elementClassName })`` as any
 }
 
 function generateStyledElement<T>(
   styleGenerator: GridElementStyleGenerator<T>
 ) {
-  return styled.div<GridElementContext<T>>((props) => {
-    const ownStyle = styleGenerator(props)
-    const elementPropKeys = Object.keys(props.elementProps)
+  return styled.div<{ gridElementContext: () => GridElementContext<T> }>((props) => {
+    const context = props.gridElementContext()
+    const ownStyle = styleGenerator(context)
+    const elementPropKeys = Object.keys(context.elementProps)
 
     return elementPropKeys.reduce(
       (elementStyle, key) =>
@@ -69,7 +80,7 @@ function generateStyledElement<T>(
           getElementPropertyStyle(
             gridPropertyStyleMap,
             key,
-            props.elementProps[key]
+            context.elementProps[key]
           )
         ),
       ownStyle

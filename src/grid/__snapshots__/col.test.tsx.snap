@@ -318,3 +318,43 @@ exports[`Default col (equal) 1`] = `
   </p>
 </div>
 `;
+
+exports[`Enzyme snapshot 1`] = `
+.c0 {
+  width: 100%;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  -webkit-flex: 0 0 100.000000%;
+  -ms-flex: 0 0 100.000000%;
+  flex: 0 0 100.000000%;
+  max-width: 100.000000%;
+}
+
+<Styled(Col)
+  className="custom-class-name"
+  id="custom-id"
+  size={12}
+>
+  <Col
+    className="custom-class-name twbs-grid-col"
+    id="custom-id"
+    size={12}
+  >
+    <styled.div
+      className="custom-class-name twbs-grid-col"
+      gridElementContext={[Function]}
+      id="custom-id"
+    >
+      <div
+        className="c0 custom-class-name twbs-grid-col"
+        id="custom-id"
+      >
+        <p>
+          child
+        </p>
+      </div>
+    </styled.div>
+  </Col>
+</Styled(Col)>
+`;

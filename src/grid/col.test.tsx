@@ -1,8 +1,19 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
+import { mount } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import 'jest-styled-components'
 import { GridTheme } from '../theme/theme'
 import { Col } from './col'
+
+test('Enzyme snapshot', () => {
+  const output = mount(
+    <Col size={12} id="custom-id" className="custom-class-name">
+      <p>child</p>
+    </Col>
+  )
+  expect(toJson(output)).toMatchSnapshot()
+})
 
 test('Default col (equal)', () => {
   const output = renderer

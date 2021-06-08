@@ -83,7 +83,7 @@ export const rowPropKeys = [
 ]
 
 export const Row = configureElement<RowProps>(
-  'twbs-grid-row', ({ ownProps, themeProps }) => {
+  'Row', ({ ownProps, themeProps }) => {
     const rowStyle = initialRowStyle(themeProps, ownProps.gutters === false)
 
     if (ownProps.gutters === false) {

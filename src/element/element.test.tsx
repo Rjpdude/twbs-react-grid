@@ -10,9 +10,9 @@ test('Configure element function', () => {
 })
 
 test('Supplies component w/ attached styled component ref and class name', () => {
-  const Element = configureElement('demo-class-name', () => ({}), [])
+  const Element = configureElement('Demo', () => ({}), [])
 
-  expect(Element.attrs).toEqual([ { className: 'demo-class-name' } ])
+  expect(Element.attrs).toEqual([ { className: 'twbs-grid-demo' } ])
   expect(Element.styledComponent).toEqual(expect.any(Object))
 })
 
